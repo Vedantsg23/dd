@@ -1,5 +1,4 @@
-Group C  |  Blockchain Technology
-Practical 4  |  Student records using structures, arrays, and fallback
+
 Language: Solidity 0.8.x
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
@@ -31,12 +30,5 @@ contract StudentData {
  
     receive() external payable {}
 }
-Sample output
-Example interaction in Remix:
-addStudent(101, "Asha", 20) -> transaction successful
-getStudent(0) -> (101, "Asha", 20)
-getStudentCount() -> 1
-LP III  |  PRACTICAL CODE GUIDE
 
-LP III Practical Codes  •  1
 
