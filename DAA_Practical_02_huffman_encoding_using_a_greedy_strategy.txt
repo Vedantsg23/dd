@@ -1,0 +1,74 @@
+Group A  |  Design and Analysis of Algorithms
+Practical 2  |  Huffman encoding using a greedy strategy
+Language: Python 3
+
+from collections import Counter
+import heapq
+import itertools
+ 
+class HuffmanNode:
+    def __init__(self, character=None, frequency=0, left=None, right=None):
+        self.character = character
+        self.frequency = frequency
+        self.left = left
+        self.right = right
+ 
+def build_huffman_tree(text):
+    if not text:
+        return None
+    order = itertools.count()
+    heap = []
+    for character, frequency in sorted(Counter(text).items()):
+        node = HuffmanNode(character, frequency)
+        heapq.heappush(heap, (frequency, next(order), node))
+    while len(heap) > 1:
+        first_frequency, _, left = heapq.heappop(heap)
+        second_frequency, _, right = heapq.heappop(heap)
+        parent = HuffmanNode(frequency=first_frequency + second_frequency, left=left, right=right)
+        heapq.heappush(heap, (parent.frequency, next(order), parent))
+    return heap[0][2]
+ 
+def assign_huffman_codes(node, prefix="", codes=None):
+    if codes is None:
+        codes = {}
+    if node.character is not None:
+        codes[node.character] = prefix or "0"
+    else:
+        assign_huffman_codes(node.left, prefix + "0", codes)
+        assign_huffman_codes(node.right, prefix + "1", codes)
+    return codes
+ 
+text = input("Enter text: ")
+root = build_huffman_tree(text)
+if root is None:
+    print("Please enter a non-empty string")
+else:
+    frequencies = Counter(text)
+    codes = assign_huffman_codes(root)
+    encoded_text = "".join(codes[character] for character in text)
+    print("Character frequencies:")
+    for character in sorted(frequencies):
+        print(f"{character} : {frequencies[character]}")
+    print("Character codes:")
+    for character in sorted(codes):
+        print(f"{character} : {codes[character]}")
+    print("Encoded text:", encoded_text)
+    print("Encoded length:", len(encoded_text), "bits")
+Sample output
+Enter text: abacabad
+Character frequencies:
+a : 4
+b : 2
+c : 1
+d : 1
+Character codes:
+a : 0
+b : 10
+c : 110
+d : 111
+Encoded text: 01001100100111
+Encoded length: 14 bits
+LP III  |  PRACTICAL CODE GUIDE
+
+LP III Practical Codes  •  1
+

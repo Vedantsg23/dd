@@ -1,0 +1,56 @@
+Group A  |  Design and Analysis of Algorithms
+Practical 4  |  0-1 Knapsack using dynamic programming
+def solve_knapsack(weights, values, capacity):
+    item_count = len(weights)
+    table = [[0 for _ in range(capacity + 1)] for _ in range(item_count + 1)]
+    for item in range(1, item_count + 1):
+        for current_capacity in range(capacity + 1):
+            if weights[item - 1] <= current_capacity:
+                include = values[item - 1] + table[item - 1][current_capacity - weights[item - 1]]
+                exclude = table[item - 1][current_capacity]
+                table[item][current_capacity] = max(include, exclude)
+            else:
+                table[item][current_capacity] = table[item - 1][current_capacity]
+    selected_items = []
+    current_capacity = capacity
+    for item in range(item_count, 0, -1):
+        if table[item][current_capacity] != table[item - 1][current_capacity]:
+            selected_items.append(item)
+            current_capacity -= weights[item - 1]
+    selected_items.reverse()
+    return table, selected_items
+ 
+number_of_items = int(input("Enter number of items: "))
+weights, values = [], []
+for item_number in range(1, number_of_items + 1):
+    weight, value = map(int, input(f"Enter weight and value of item {item_number}: ").split())
+    weights.append(weight)
+    values.append(value)
+capacity = int(input("Enter knapsack capacity: "))
+table, selected_items = solve_knapsack(weights, values, capacity)
+print("T-Table:")
+print("i\j", *range(capacity + 1), sep="\t")
+for item_number, row in enumerate(table):
+    print(item_number, *row, sep="\t")
+print("Maximum value in knapsack =", table[number_of_items][capacity])
+print("Items selected:", ", ".join(f"Item-{item}" for item in selected_items))
+Sample output
+Enter number of items: 4
+Enter weight and value of item 1: 2 3
+Enter weight and value of item 2: 3 4
+Enter weight and value of item 3: 4 5
+Enter weight and value of item 4: 5 6
+Enter knapsack capacity: 5
+T-Table:
+i\j 0 1 2 3 4 5
+0 0 0 0 0 0 0
+1 0 0 3 3 3 3
+2 0 0 3 4 4 7
+3 0 0 3 4 5 7
+4 0 0 3 4 5 7
+Maximum value in knapsack = 7
+Items selected: Item-1, Item-2
+LP III  |  PRACTICAL CODE GUIDE
+
+LP III Practical Codes  •  1
+

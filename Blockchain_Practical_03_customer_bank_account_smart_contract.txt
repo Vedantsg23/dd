@@ -1,0 +1,43 @@
+Group C  |  Blockchain Technology
+Practical 3  |  Customer bank account smart contract
+Language: Solidity 0.8.x
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+ 
+contract Bank {
+    address public owner;
+    uint256 private balance;
+ 
+    constructor() {
+        owner = msg.sender;
+        balance = 0;
+    }
+ 
+    function deposit() public payable {
+        require(msg.value > 0, "Deposit amount must be greater than zero");
+        balance += msg.value;
+    }
+ 
+    function withdraw(uint256 amount) public {
+        require(msg.sender == owner, "Only owner can withdraw funds");
+        require(amount <= balance, "Insufficient balance");
+        balance -= amount;
+        payable(owner).transfer(amount);
+    }
+ 
+    function getBalance() public view returns (uint256) {
+        return balance;
+    }
+}
+Sample output
+Example interaction in Remix:
+Deploying account becomes owner
+Deposit value: 1000000000000000000 wei
+getBalance: 1000000000000000000 wei
+withdraw amount: 250000000000000000 wei
+getBalance after withdrawal: 750000000000000000 wei
+Reference manual sample gas: deposit 43558; withdraw 16147; getBalance execution 2410
+LP III  |  PRACTICAL CODE GUIDE
+
+LP III Practical Codes  •  1
+
