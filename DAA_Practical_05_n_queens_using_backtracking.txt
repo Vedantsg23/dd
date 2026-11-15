@@ -1,6 +1,4 @@
-Group A  |  Design and Analysis of Algorithms
-Practical 5  |  N-Queens using backtracking
-Language: Python 3
+
 def is_safe(board, row, column, size):
     for previous_row in range(row):
         distance = row - previous_row
@@ -46,29 +44,3 @@ else:
         print("Number of backtracks =", backtrack_count[0])
     else:
         print(f"No solution exists with first queen at column {first_column}")
-Sample output
-For N=8 and first queen in column 1:
-Matrix with first queen placed:
-1 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0
-Final 8-Queens matrix:
-1 0 0 0 0 0 0 0
-0 0 0 0 1 0 0 0
-0 0 0 0 0 0 0 1
-0 0 0 0 0 1 0 0
-0 0 1 0 0 0 0 0
-0 0 0 0 0 0 1 0
-0 1 0 0 0 0 0 0
-0 0 0 1 0 0 0 0
-Column of queen in each row = (1, 5, 8, 6, 3, 7, 2, 4)
-Number of backtracks = 105
-LP III  |  PRACTICAL CODE GUIDE
-
-LP III Practical Codes  •  1
-
