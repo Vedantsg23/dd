@@ -1,7 +1,4 @@
-Group A  |  Design and Analysis of Algorithms
-.
-Practical 1  |  Recursive and iterative Fibonacci
-Language: Python 3
+
 
 def fibonacci_recursive(n):
     if n <= 1:
@@ -28,25 +25,6 @@ else:
     print("Recursive Fibonacci sequence:")
     for value in recursive_sequence:
         print(value)
-Sample output
-How many terms? 7
-Iterative Fibonacci sequence:
-0
-1
-1
-2
-3
-5
-8
-Recursive Fibonacci sequence:
-0
-1
-1
-2
-3
-5
-8
-LP III  |  PRACTICAL CODE GUIDE
 
-LP III Practical Codes  •  1
+
 
