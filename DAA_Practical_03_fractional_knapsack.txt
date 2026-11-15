@@ -1,5 +1,4 @@
-Group A  |  Design and Analysis of Algorithms
-Practical 3  |  Fractional Knapsack
+
 def fractional_knapsack(capacity, items):
     # Calculate profit/weight ratio
     items.sort(key=lambda x: x[1] / x[0], reverse=True)
@@ -35,7 +34,4 @@ max_profit = fractional_knapsack(capacity, items)
 
 print("\nMaximum Profit:", max_profit)
 
-LP III  |  PRACTICAL CODE GUIDE
-
-LP III Practical Codes  •  1
 
