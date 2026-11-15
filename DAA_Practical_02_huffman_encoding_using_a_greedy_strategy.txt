@@ -1,6 +1,4 @@
-Group A  |  Design and Analysis of Algorithms
-Practical 2  |  Huffman encoding using a greedy strategy
-Language: Python 3
+
 
 from collections import Counter
 import heapq
@@ -54,21 +52,5 @@ else:
         print(f"{character} : {codes[character]}")
     print("Encoded text:", encoded_text)
     print("Encoded length:", len(encoded_text), "bits")
-Sample output
-Enter text: abacabad
-Character frequencies:
-a : 4
-b : 2
-c : 1
-d : 1
-Character codes:
-a : 0
-b : 10
-c : 110
-d : 111
-Encoded text: 01001100100111
-Encoded length: 14 bits
-LP III  |  PRACTICAL CODE GUIDE
 
-LP III Practical Codes  •  1
 
